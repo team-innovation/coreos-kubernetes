@@ -421,7 +421,8 @@ EOF
 EOF
     }
 
-    local TEMPLATE=/srv/kubernetes/manifests/kube-dns-svc.json
+    #local TEMPLATE=/srv/kubernetes/manifests/kube-dns-svc.json
+    local TEMPLATE=/dev/null
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -462,7 +463,8 @@ EOF
 
     # For single node, fix memory at 212Mi. Multiple node clusters
     # should scale up their memory by about 12Mi per node
-    local TEMPLATE=/srv/kubernetes/manifests/heapster-rc.json
+    #local TEMPLATE=/srv/kubernetes/manifests/heapster-rc.json
+    local TEMPLATE=/dev/null
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -524,7 +526,8 @@ EOF
 EOF
     }
 
-    local TEMPLATE=/srv/kubernetes/manifests/influxdb-rc.json
+    #local TEMPLATE=/srv/kubernetes/manifests/influxdb-rc.json
+    local TEMPLATE=/dev/null
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -601,7 +604,8 @@ EOF
 EOF
     }
 
-    local TEMPLATE=/srv/kubernetes/manifests/heapster-svc.json
+    #local TEMPLATE=/srv/kubernetes/manifests/heapster-svc.json
+    local TEMPLATE=/dev/null
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -632,7 +636,8 @@ EOF
 EOF
     }
 
-    local TEMPLATE=/srv/kubernetes/manifests/influxdb-svc.json
+    #local TEMPLATE=/srv/kubernetes/manifests/influxdb-svc.json
+    local TEMPLATE=/dev/null
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -713,10 +718,10 @@ function start_addons {
     echo "K8S: DNS addon"
     curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/kube-dns-rc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/replicationcontrollers" > /dev/null
     curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/kube-dns-svc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/services" > /dev/null
-    curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/heapster-rc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/replicationcontrollers" > /dev/null
-    curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/influxdb-rc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/replicationcontrollers" > /dev/null
-    curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/heapster-svc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/services" > /dev/null
-    curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/influxdb-svc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/services" > /dev/null
+    #curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/heapster-rc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/replicationcontrollers" > /dev/null
+    #curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/influxdb-rc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/replicationcontrollers" > /dev/null
+    #curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/heapster-svc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/services" > /dev/null
+    #curl --silent -XPOST -d"$(cat /srv/kubernetes/manifests/influxdb-svc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/services" > /dev/null
 }
 
 init_config
