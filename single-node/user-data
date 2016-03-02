@@ -110,7 +110,7 @@ spec:
     - /hyperkube
     - proxy
     - --master=http://127.0.0.1:8080
-    - --proxy-mode=iptables
+    #- --proxy-mode=iptables
     securityContext:
       privileged: true
     volumeMounts:
@@ -421,8 +421,7 @@ EOF
 EOF
     }
 
-    #local TEMPLATE=/srv/kubernetes/manifests/kube-dns-svc.json
-    local TEMPLATE=/dev/null
+    local TEMPLATE=/srv/kubernetes/manifests/kube-dns-svc.json
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -463,8 +462,7 @@ EOF
 
     # For single node, fix memory at 212Mi. Multiple node clusters
     # should scale up their memory by about 12Mi per node
-    #local TEMPLATE=/srv/kubernetes/manifests/heapster-rc.json
-    local TEMPLATE=/dev/null
+    local TEMPLATE=/srv/kubernetes/manifests/heapster-rc.json
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -526,8 +524,7 @@ EOF
 EOF
     }
 
-    #local TEMPLATE=/srv/kubernetes/manifests/influxdb-rc.json
-    local TEMPLATE=/dev/null
+    local TEMPLATE=/srv/kubernetes/manifests/influxdb-rc.json
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -604,8 +601,7 @@ EOF
 EOF
     }
 
-    #local TEMPLATE=/srv/kubernetes/manifests/heapster-svc.json
-    local TEMPLATE=/dev/null
+    local TEMPLATE=/srv/kubernetes/manifests/heapster-svc.json
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
@@ -636,8 +632,7 @@ EOF
 EOF
     }
 
-    #local TEMPLATE=/srv/kubernetes/manifests/influxdb-svc.json
-    local TEMPLATE=/dev/null
+    local TEMPLATE=/srv/kubernetes/manifests/influxdb-svc.json
     [ -f $TEMPLATE ] || {
         echo "TEMPLATE: $TEMPLATE"
         mkdir -p $(dirname $TEMPLATE)
